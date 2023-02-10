@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) 
+{
+	struct state
+	{
+		char name [30];
+		int pop;
+		float lit_rate;
+		float per_cap_in;
+	};
+	struct state stat[4];
+	int i = 0;
+	for (i=0;i<4;i++)
+	{
+		printf("Enter state name - ");
+		scanf("%s",stat[i].name) ;
+		printf("Enter population of the state - ");
+		scanf("%d",&stat[i].pop);
+		printf("Enter the litracy rate of the state - ");
+		scanf("%f",&stat[i].lit_rate);
+		printf("Enter states per catipal income - ");
+		scanf("%f",&stat[i].per_cap_in);	
+	}
+
+	char  high_state_lit[30];
+	char  high_state_per_cap_in[30];
+	float high_lit_rate;
+	float high_per_cap_in; 
+	high_lit_rate = stat[0].lit_rate ;
+	int lit=0 ,per = 0;
+	for(i=0;i<4;i++)
+	{
+		if(high_lit_rate<stat[i].lit_rate)
+		{
+			high_lit_rate=stat[i].lit_rate;
+			strcpy(high_state_lit,stat[i].name);
+			lit = i ;
+		}
+	}
+	
+	high_per_cap_in= stat[0].per_cap_in ;
+	for(i=0;i<4;i++)
+	{
+		if(high_per_cap_in<stat[i].per_cap_in)
+		{
+			high_per_cap_in=stat[i].per_cap_in;
+			strcpy(high_state_per_cap_in,stat[i].name);
+			per = i ;
+		}
+	}
+	printf("\n The State wih high literacy rate record is as follow -");
+	printf("\nstate name - %s",stat[lit].name);
+	printf("\npopulation of the state - %d",stat[lit].pop);
+	printf("\nlitracy rate of the state - %.2f",stat[lit].lit_rate);
+	printf("\nstates per catipal income - %.2f",stat[lit].per_cap_in);
+	printf("\n The State wih high per capital income record is as follow -");
+	printf("\nstate name - %s",stat[per].name);
+	printf("\npopulation of the state - %d",stat[per].pop);
+	printf("\nlitracy rate of the state - %.2f",stat[per].lit_rate);
+	printf("\nstates per catipal income - %.2f",stat[per].per_cap_in);
+
+	return 0;
+}
