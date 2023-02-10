@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+	struct state
+	{
+		char name[30];
+		int no_div;
+	};
+	struct population
+	{
+		int men;
+		int women;
+	};
+	struct combo
+	{
+		struct state a;
+		struct population b;
+	};
+	struct combo comb[4];
+	int i = 0;
+	for(i=0;i<4;i++)
+	{
+		printf("Enter state - ");
+		scanf("%s",&comb[i].a.name);
+		printf("Enter district number - ");
+		scanf("%d",&comb[i].a.no_div);
+		printf("Enter number of men - ");
+		scanf("%d",&comb[i].b.men);
+		printf("Enter number of women - ");
+		scanf("%d",&comb[i].b.women);
+	
+	}
+	for(i=0;i<4;i++)
+	{
+		if(comb[i].b.men > comb[i].b.women)
+	      printf("\nIn state %s population of men %d is greater than women %d",comb[i].a.name,comb[i].b.men,comb[i].b.women);
+	}
+	
+	
+	return 0;
+}
